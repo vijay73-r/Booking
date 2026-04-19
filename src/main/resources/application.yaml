@@ -10,6 +10,12 @@ spring:
     username: root
     password: root
 
+  task:
+    execution:
+      pool:
+        core-size: 5
+        max-size: 10
+
   jpa:
     hibernate:
       ddl-auto: update

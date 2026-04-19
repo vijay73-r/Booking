@@ -12,6 +12,7 @@ import com.smartbooking.smart_booking.common.exception.ResourceNotFoundException
 import com.smartbooking.smart_booking.inventory.entity.Room;
 import com.smartbooking.smart_booking.inventory.repository.RoomRepository;
 import com.smartbooking.smart_booking.inventory.service.InventoryService;
+import com.smartbooking.smart_booking.notification.service.NotificationFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +30,7 @@ public class BookingService {
     private final UserRepository userRepository;
     private final InventoryService inventoryService;
     private final PricingService pricingService;
+    private final NotificationFacade notificationFacade;
 
     @Transactional
     public BookingResponse createBooking(
@@ -91,6 +93,12 @@ public class BookingService {
         booking.setStatus(BookingStatus.CONFIRMED);
 
         Booking saved = bookingRepository.save(booking);
+
+        notificationFacade.bookingConfirmed(
+                user.getEmail(),
+                null,
+                saved.getId()
+        );
 
         return BookingResponse.builder()
                 .bookingId(saved.getId())
