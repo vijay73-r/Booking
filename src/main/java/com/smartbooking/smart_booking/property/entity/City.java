@@ -10,6 +10,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "cities")
 public class City extends BaseEntity {
+
     @Column(nullable = false, length = 120)
     private String name;
 

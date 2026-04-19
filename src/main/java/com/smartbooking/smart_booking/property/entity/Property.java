@@ -11,6 +11,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "properties")
 public class Property extends BaseEntity {
+
     @Column(nullable = false, length = 150)
     private String title;
 
