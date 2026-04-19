@@ -10,4 +10,10 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findByCustomer_Id(Long userId);
 
     List<Booking> findByStatus(BookingStatus status);
+
+    boolean existsByIdAndCustomer_IdAndStatus(
+            Long bookingId,
+            Long userId,
+            com.smartbooking.smart_booking.booking.entity.BookingStatus status
+    );
 }
