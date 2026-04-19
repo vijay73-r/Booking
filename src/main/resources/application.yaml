@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: smart-booking
+
+  profiles:
+    active: local
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/smart_booking
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+server:
+  port: 8080
