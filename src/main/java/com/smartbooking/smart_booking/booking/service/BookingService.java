@@ -90,7 +90,7 @@ public class BookingService {
         booking.setBaseAmount(baseAmount);
         booking.setGstAmount(gst);
         booking.setTotalAmount(total);
-        booking.setStatus(BookingStatus.CONFIRMED);
+        booking.setStatus(BookingStatus.PENDING_PAYMENT);
 
         Booking saved = bookingRepository.save(booking);
 
